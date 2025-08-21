@@ -1,50 +1,56 @@
-# Discovery do Projeto – Sistema de Gerenciamento de Concessionária  
+# Discovery do Projeto – Sistema de Gerenciamento de Vendas de Veículos
 
-**Nome do Projeto**  
-Sistema de Gerenciamento de Concessionária  
+## Nome do Projeto
+Sistema de Gerenciamento de Vendas de Veículos
 
-**Time**  
-Isabele Mororó e Mário Serafim
+## Time
+- Isabele Mororó  
+- Mário Serafim
 
-**Visão Geral**  
-O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de estoque, vendas, clientes e financiamentos de veículos novos e seminovos em uma concessionária.  
+## Visão Geral
+O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de **estoque, vendas, clientes e financiamentos de veículos novos e seminovos** em uma concessionária.
 
-O sistema centralizará as operações da loja em um ambiente digital, tornando mais fácil o controle dos processos, a organização das informações e a tomada de decisões estratégicas.  
+O sistema centralizará todas as operações de venda em um ambiente digital, tornando mais fácil o controle do estoque, o acompanhamento de clientes e vendas, e a gestão de financiamentos, além de permitir a tomada de decisões estratégicas de forma rápida e eficiente.
 
-Com ele será possível:  
-- Gerenciar entrada e saída de veículos.  
+### Com ele será possível:
+- Cadastrar e gerenciar veículos disponíveis para venda (novos e seminovos).  
+- Controlar a disponibilidade de veículos em estoque.  
 - Cadastrar e acompanhar clientes (PF e PJ).  
-- Registrar e acompanhar vendas associadas a clientes e veículos.  
-- Controlar propostas e contratos de financiamento.  
-- Emitir relatórios de estoque, vendas e desempenho da equipe.  
+- Registrar vendas de veículos associadas a clientes.  
+- Gerenciar propostas e contratos de financiamento.  
+- Emitir relatórios de vendas, estoque e desempenho da equipe de vendas.
 
-**Problema a Ser Resolvido**  
-Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar seus processos em sistemas digitais centralizados, o que gera falhas no controle de estoque, perda de informações de clientes e demora no acompanhamento de vendas e financiamentos.  
+## Problema a Ser Resolvido
+Concessionárias de pequeno e médio porte enfrentam dificuldades em organizar seus processos de **venda de veículos** de forma centralizada, resultando em:
+- Falhas no controle do estoque de veículos.  
+- Perda ou duplicidade de informações de clientes.  
+- Demora no acompanhamento de vendas e financiamentos.  
+- Dificuldade em gerar relatórios precisos de desempenho da equipe.
 
-**Público-Alvo**  
-- Concessionárias de veículos novos e seminovos  
-- Vendedores de automóveis  
-- Gestores de vendas e de estoque  
+## Público-Alvo
+- Concessionárias de veículos novos e seminovos.  
+- Vendedores de automóveis.  
+- Gestores de vendas e estoque de concessionárias.
 
-**Funcionalidades Mínimas do MVP**  
+## Funcionalidades Mínimas do MVP
 
-**Usuário (Vendedor/Admin):**  
-- Cadastro/Login com diferentes níveis de acesso  
-- Cadastro de veículos (novos e seminovos)  
-- Controle de disponibilidade em estoque  
-- Cadastro de clientes (PF e PJ)  
-- Registro de vendas associadas a clientes e veículos  
-- Registro de propostas de financiamento  
-- Relatórios básicos (estoque, vendas, financiamentos)  
+### Usuário (Vendedor/Admin):
+- Cadastro/Login com diferentes níveis de acesso.  
+- Cadastro e edição de veículos disponíveis para venda.  
+- Controle de disponibilidade e estoque de veículos.  
+- Cadastro e acompanhamento de clientes (PF e PJ).  
+- Registro de vendas de veículos.  
+- Registro de propostas de financiamento associadas às vendas.  
+- Relatórios básicos de vendas, estoque e financiamentos.
 
-**Admin (Gestor):**  
-- CRUD de veículos  
-- CRUD de clientes  
-- CRUD de vendedores/usuários do sistema  
-- Controle de financiamentos e status (aprovado, pendente, reprovado)  
-- Relatórios detalhados de vendas, estoque e desempenho de vendedores  
+### Admin (Gestor):
+- CRUD completo de veículos (novos e seminovos).  
+- CRUD de clientes.  
+- CRUD de vendedores/usuários do sistema.  
+- Gestão de financiamentos e status (aprovado, pendente, reprovado).  
+- Relatórios detalhados de vendas, estoque e desempenho da equipe de vendas.
 
-*Stack de Tecnologias**  
+## Stack de Tecnologias
 | Camada | Tecnologia |  
 |--------|------------|  
 | Backend | Node.js + Express |  
@@ -52,10 +58,9 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Banco | MySQL |  
 | ORM | Prisma ORM |  
 | Documentação | Markdown e Swagger |  
-| Gerenciamento | GitHub Projects |  
-| Outros | Axios |  
+| Gerenciamento | GitHub Projects |    
 
-**Entregáveis**  
+## Entregáveis
 | Entregável | Status |  
 |------------|--------|  
 | Discovery do Projeto | ✅ |  
@@ -63,9 +68,9 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Protótipo de telas (opcional) | 🔲 |  
 | Implementação Frontend | 🔲 |  
 | API em Node.js | 🔲 |  
-| Doc*umentação dos Endpoints | 🔲 |  
+| Documentação dos Endpoints | 🔲 |  
 | Desenho do Banco de Dados | 🔲 |  
 | Testes automatizados dos endpoints | 🔲 |  
 | Testes unitários (50%) | 🔲 |  
 | Repositório público no GitHub | ✅ |  
-| Apresentação final | 🔲 |  
+| Apresentação final | 🔲 |
