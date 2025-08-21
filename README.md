@@ -89,7 +89,7 @@ erDiagram
         string endereco
     }
 
-    CADASTRO_VEICULO {
+    REGISTRO_VEICULO {
         int id
         string modelo
         int ano
@@ -118,8 +118,9 @@ erDiagram
     %% RELACIONAMENTOS
     USUARIOS_FUNCIONARIOS ||--o{ VENDAS : realiza
     USUARIOS_FUNCIONARIOS ||--o{ REGISTROS_CLIENTES : realiza
-    USUARIOS_FUNCIONARIOS ||--o{ CADASTRO_VEICULOS : realiza
-    CADASTRO_VEICULO ||--o{ VENDAS : vendido_em
+    USUARIOS_FUNCIONARIOS ||--o{ REGISTRO_VEICULOS : acessa
+    REGISTRO_VEICULO ||--o{ VENDAS : vendido_em
+    REGISTROS_CLIENTES ||--o{ VENDAS : vendido_em
 
 
 ```
