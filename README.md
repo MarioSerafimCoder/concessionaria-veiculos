@@ -48,7 +48,7 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Camada | Tecnologia |  
 |--------|------------|  
 | Backend | Node.js + Express |  
-| Frontend | React.js + Vite + TailwindCSS |  
+| Frontend | React.js + Vite + Bootstrap |  
 | Banco | MySQL |  
 | ORM | Prisma ORM |  
 | Documentação | Markdown e Swagger |  
