@@ -4,7 +4,7 @@
 Sistema de Gerenciamento de Concessionária  
 
 👥 **Time**  
-[Adicionar nomes dos integrantes]  
+Isabele Mororó e Mário Serafim
 
 🎯 **Visão Geral**  
 O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de estoque, vendas, clientes e financiamentos de veículos novos e seminovos em uma concessionária.  
