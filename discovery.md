@@ -51,7 +51,6 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Frontend | React.js + Vite + TailwindCSS |  
 | Banco | MySQL |  
 | ORM | Prisma ORM |  
-| Autenticação | JWT + bcrypt |  
 | Documentação | Markdown e Swagger |  
 | Gerenciamento | GitHub Projects |  
 | Outros | Axios |  
