@@ -1,12 +1,12 @@
 # Discovery do Projeto – Sistema de Gerenciamento de Concessionária  
 
-🚗 **Nome do Projeto**  
+**Nome do Projeto**  
 Sistema de Gerenciamento de Concessionária  
 
-👥 **Time**  
+**Time**  
 Isabele Mororó e Mário Serafim
 
-🎯 **Visão Geral**  
+**Visão Geral**  
 O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de estoque, vendas, clientes e financiamentos de veículos novos e seminovos em uma concessionária.  
 
 O sistema centralizará as operações da loja em um ambiente digital, tornando mais fácil o controle dos processos, a organização das informações e a tomada de decisões estratégicas.  
@@ -18,15 +18,15 @@ Com ele será possível:
 - Controlar propostas e contratos de financiamento.  
 - Emitir relatórios de estoque, vendas e desempenho da equipe.  
 
-🧠 **Problema a Ser Resolvido**  
+**Problema a Ser Resolvido**  
 Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar seus processos em sistemas digitais centralizados, o que gera falhas no controle de estoque, perda de informações de clientes e demora no acompanhamento de vendas e financiamentos.  
 
-👨‍🎓 **Público-Alvo**  
+**Público-Alvo**  
 - Concessionárias de veículos novos e seminovos  
 - Vendedores de automóveis  
 - Gestores de vendas e de estoque  
 
-✅ **Funcionalidades Mínimas do MVP**  
+**Funcionalidades Mínimas do MVP**  
 
 **Usuário (Vendedor/Admin):**  
 - Cadastro/Login com diferentes níveis de acesso  
@@ -44,7 +44,7 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 - Controle de financiamentos e status (aprovado, pendente, reprovado)  
 - Relatórios detalhados de vendas, estoque e desempenho de vendedores  
 
-🧰 **Stack de Tecnologias**  
+*Stack de Tecnologias**  
 | Camada | Tecnologia |  
 |--------|------------|  
 | Backend | Node.js + Express |  
@@ -55,7 +55,7 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Gerenciamento | GitHub Projects |  
 | Outros | Axios |  
 
-📦 **Entregáveis**  
+**Entregáveis**  
 | Entregável | Status |  
 |------------|--------|  
 | Discovery do Projeto | ✅ |  
@@ -63,7 +63,7 @@ Concessionárias de pequeno e médio porte enfrentam dificuldade em organizar se
 | Protótipo de telas (opcional) | 🔲 |  
 | Implementação Frontend | 🔲 |  
 | API em Node.js | 🔲 |  
-| Documentação dos Endpoints | 🔲 |  
+| Doc*umentação dos Endpoints | 🔲 |  
 | Desenho do Banco de Dados | 🔲 |  
 | Testes automatizados dos endpoints | 🔲 |  
 | Testes unitários (50%) | 🔲 |  
