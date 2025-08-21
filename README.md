@@ -74,3 +74,52 @@ Concessionárias de pequeno e médio porte enfrentam dificuldades em organizar s
 | Testes unitários (50%) | 🔲 |  
 | Repositório público no GitHub | ✅ |  
 | Apresentação final | 🔲 |
+
+
+
+```mermaid
+erDiagram
+
+    REGISTROS_CLIENTES {
+        int id
+        string nome
+        string CPF
+        string email
+        string telefone
+        string endereco
+    }
+
+    CADASTRO_VEICULO {
+        int id
+        string modelo
+        int ano
+        string placa
+        string status
+        float valor
+    }
+
+    VENDAS {
+        int id
+        int id_cliente
+        int id_veiculo
+        date data_venda
+        float valor_total
+        string forma_pagamento
+    }
+
+        USUARIOS_FUNCIONARIOS {
+        int id
+        string nome
+        string email
+        string senha
+        string tipo
+    }
+
+    %% RELACIONAMENTOS
+    USUARIOS_FUNCIONARIOS ||--o{ VENDAS : realiza
+    USUARIOS_FUNCIONARIOS ||--o{ REGISTROS_CLIENTES : realiza
+    USUARIOS_FUNCIONARIOS ||--o{ CADASTRO_VEICULOS : realiza
+    CADASTRO_VEICULO ||--o{ VENDAS : vendido_em
+
+
+```
