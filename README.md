@@ -1,33 +1,32 @@
 # Discovery do Projeto – Sistema de Gerenciamento de Vendas de Veículos
 
-## Nome do Projeto
+## Nome do projeto
 Sistema de Gerenciamento de Vendas de Veículos
 
 ## Time
 - Isabele Mororó  
 - Mário Serafim
 
-## Visão Geral
-O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de **estoque, vendas, clientes e financiamentos de veículos novos e seminovos** em uma concessionária.
+## Visão geral
+O projeto tem como objetivo desenvolver uma aplicação fullstack voltada para o gerenciamento de **estoque, vendas e clientes de veículos novos e seminovos** em uma concessionária.
 
-O sistema centralizará todas as operações de venda em um ambiente digital, tornando mais fácil o controle do estoque, o acompanhamento de clientes e vendas, e a gestão de financiamentos, além de permitir a tomada de decisões estratégicas de forma rápida e eficiente.
+O sistema centralizará todas as operações de venda em um ambiente digital, tornando mais fácil o controle do estoque, o acompanhamento de clientes e vendas, além de permitir a tomada de decisões estratégicas de forma rápida e eficiente.
 
 ### Com ele será possível:
 - Cadastrar e gerenciar veículos disponíveis para venda (novos e seminovos).  
 - Controlar a disponibilidade de veículos em estoque.  
 - Cadastrar e acompanhar clientes (PF e PJ).  
 - Registrar vendas de veículos associadas a clientes.  
-- Gerenciar propostas e contratos de financiamento.  
 - Emitir relatórios de vendas, estoque e desempenho da equipe de vendas.
 
-## Problema a Ser Resolvido
+## Problema a ser resolvido
 Concessionárias de pequeno e médio porte enfrentam dificuldades em organizar seus processos de **venda de veículos** de forma centralizada, resultando em:
 - Falhas no controle do estoque de veículos.  
 - Perda ou duplicidade de informações de clientes.  
-- Demora no acompanhamento de vendas e financiamentos.  
+- Demora no acompanhamento de vendas e financiamento.  
 - Dificuldade em gerar relatórios precisos de desempenho da equipe.
 
-## Público-Alvo
+## Público-alvo
 - Concessionárias de veículos novos e seminovos.  
 - Vendedores de automóveis.  
 - Gestores de vendas e estoque de concessionárias.
@@ -38,16 +37,14 @@ Concessionárias de pequeno e médio porte enfrentam dificuldades em organizar s
 - Cadastro/Login com diferentes níveis de acesso.  
 - Cadastro e edição de veículos disponíveis para venda.  
 - Controle de disponibilidade e estoque de veículos.  
-- Cadastro e acompanhamento de clientes (PF e PJ).  
+- Registro e acompanhamento de clientes (PF e PJ).  
 - Registro de vendas de veículos.  
-- Registro de propostas de financiamento associadas às vendas.  
-- Relatórios básicos de vendas, estoque e financiamentos.
+- Relatórios básicos de vendas e estoque.
 
 ### Admin (Gestor):
 - CRUD completo de veículos (novos e seminovos).  
 - CRUD de clientes.  
 - CRUD de vendedores/usuários do sistema.  
-- Gestão de financiamentos e status (aprovado, pendente, reprovado).  
 - Relatórios detalhados de vendas, estoque e desempenho da equipe de vendas.
 
 ## Stack de Tecnologias
