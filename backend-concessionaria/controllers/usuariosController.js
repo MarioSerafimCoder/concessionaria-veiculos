@@ -48,3 +48,4 @@ exports.deleteUsuario = (req, res) => {
     res.json({ message: 'Usuário deletado' });
   });
 };
+
