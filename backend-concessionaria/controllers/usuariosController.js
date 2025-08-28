@@ -1,6 +1,5 @@
 const db = require('../db');
 
-// Listar todos os usuários
 exports.getAllUsuarios = (req, res) => {
   db.query('SELECT * FROM usuarios_funcionarios', (err, results) => {
     if (err) return res.status(500).json(err);
@@ -8,7 +7,6 @@ exports.getAllUsuarios = (req, res) => {
   });
 };
 
-// Listar usuário por ID
 exports.getUsuarioById = (req, res) => {
   const { id } = req.params;
   db.query('SELECT * FROM usuarios_funcionarios WHERE id = ?', [id], (err, results) => {
@@ -17,7 +15,6 @@ exports.getUsuarioById = (req, res) => {
   });
 };
 
-// Criar usuário
 exports.createUsuario = (req, res) => {
   const { nome, email, senha, tipo } = req.body;
   db.query(
@@ -30,7 +27,6 @@ exports.createUsuario = (req, res) => {
   );
 };
 
-// Atualizar usuário
 exports.updateUsuario = (req, res) => {
   const { id } = req.params;
   const { nome, email, senha, tipo } = req.body;
@@ -44,7 +40,7 @@ exports.updateUsuario = (req, res) => {
   );
 };
 
-// Deletar usuário
+
 exports.deleteUsuario = (req, res) => {
   const { id } = req.params;
   db.query('DELETE FROM usuarios_funcionarios WHERE id=?', [id], (err) => {

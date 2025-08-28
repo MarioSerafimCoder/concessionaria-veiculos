@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const usuariosController = require('../controllers/usuariosController');
 
-// Rotas CRUD
 router.get('/', usuariosController.getAllUsuarios);
 router.get('/:id', usuariosController.getUsuarioById);
 router.post('/', usuariosController.createUsuario);
