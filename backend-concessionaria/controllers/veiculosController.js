@@ -1,49 +1,58 @@
-const db = require('../db');
+const Veiculo = require("../models/veiculosModel");
 
-exports.getAllVeiculos = (req, res) => {
-  db.query('SELECT * FROM cadastro_veiculo', (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results);
-  });
+// Buscar todos os veículos
+exports.getAllVeiculos = async (req, res) => {
+  try {
+    const veiculos = await Veiculo.findAll();
+    res.json(veiculos);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar veículos", details: error.message });
+  }
 };
 
-exports.getVeiculoById = (req, res) => {
-  const { id } = req.params;
-  db.query('SELECT * FROM cadastro_veiculo WHERE id = ?', [id], (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results[0]);
-  });
+// Buscar veículo por ID
+exports.getVeiculoById = async (req, res) => {
+  try {
+    const veiculo = await Veiculo.findByPk(req.params.id);
+    if (!veiculo) return res.status(404).json({ error: "Veículo não encontrado" });
+    res.json(veiculo);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar veículo", details: error.message });
+  }
 };
 
-exports.createVeiculo = (req, res) => {
-  const { modelo, ano, placa, status, valor, id_funcionario } = req.body;
-  db.query(
-    'INSERT INTO cadastro_veiculo (modelo, ano, placa, status, valor, id_funcionario) VALUES (?, ?, ?, ?, ?, ?)',
-    [modelo, ano, placa, status, valor, id_funcionario],
-    (err, results) => {
-      if (err) return res.status(500).json(err);
-      res.json({ id: results.insertId, modelo, placa });
-    }
-  );
+// Criar veículo
+exports.createVeiculo = async (req, res) => {
+  try {
+    const veiculo = await Veiculo.create(req.body);
+    res.status(201).json(veiculo);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao criar veículo", details: error.message });
+  }
 };
 
-exports.updateVeiculo = (req, res) => {
-  const { id } = req.params;
-  const { modelo, ano, placa, status, valor, id_funcionario } = req.body;
-  db.query(
-    'UPDATE cadastro_veiculo SET modelo=?, ano=?, placa=?, status=?, valor=?, id_funcionario=? WHERE id=?',
-    [modelo, ano, placa, status, valor, id_funcionario, id],
-    (err) => {
-      if (err) return res.status(500).json(err);
-      res.json({ message: 'Veículo atualizado' });
-    }
-  );
+// Atualizar veículo
+exports.updateVeiculo = async (req, res) => {
+  try {
+    const veiculo = await Veiculo.findByPk(req.params.id);
+    if (!veiculo) return res.status(404).json({ error: "Veículo não encontrado" });
+
+    await veiculo.update(req.body);
+    res.json({ message: "Veículo atualizado", veiculo });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao atualizar veículo", details: error.message });
+  }
 };
 
-exports.deleteVeiculo = (req, res) => {
-  const { id } = req.params;
-  db.query('DELETE FROM cadastro_veiculo WHERE id=?', [id], (err) => {
-    if (err) return res.status(500).json(err);
-    res.json({ message: 'Veículo deletado' });
-  });
+// Deletar veículo
+exports.deleteVeiculo = async (req, res) => {
+  try {
+    const veiculo = await Veiculo.findByPk(req.params.id);
+    if (!veiculo) return res.status(404).json({ error: "Veículo não encontrado" });
+
+    await veiculo.destroy();
+    res.json({ message: "Veículo deletado" });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao deletar veículo", details: error.message });
+  }
 };

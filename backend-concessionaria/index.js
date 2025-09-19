@@ -1,30 +1,74 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+
+const sequelize = require("./db");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
 app.use(bodyParser.json());
 
-// Rota raiz
-app.get('/', (req, res) => {
-    res.send('API Concessionária funcionando!');
+Promise.all([
+    import('adminjs'),
+    import('@adminjs/sequelize'),
+    import('@adminjs/express')
+]).then( async ([{default: AdminJS}, AdminDB, AdminExpress]) => {
+    const { Adapter, Database, Resource } = AdminDB;
+
+    AdminJS.registerAdapter({
+        Database,
+        Resource
+    });
+
+})
+
+    //configurando a conexão entre o AdminJS e a nossa base (com a nossa conexao)
+    const db = await new Adapter('mysql2', connectionData).init();
+
+    //mapear quais recursos/tabelas do banco serão gerados os cruds
+    const admin = new AdminJS({
+        resources: [
+            {
+                resource: db.table('clientes'),
+                options: {} // definir alguma action a nao ser feita
+            },
+            {
+                resource: db.table('usuarios'),
+                options: {} // definir alguma action a nao ser feita
+            }
+        ]
+    });
+
+    admin.watch();
+
+
+app.get("/", (req, res) => {
+  res.send("API Concessionária funcionando!");
 });
 
-// Rotas
-const usuariosRoutes = require('./routes/usuarios');
-const clientesRoutes = require('./routes/clientes');
-const veiculosRoutes = require('./routes/veiculos');
-const vendasRoutes = require('./routes/vendas');
+const usuariosRoutes = require("./routes/usuariosRoute");
+const clientesRoutes = require("./routes/clientesRoute");
+const veiculosRoutes = require("./routes/veiculosRoute");
+const vendasRoutes = require("./routes/vendasRoute");
 
-app.use('/usuarios', usuariosRoutes);
-app.use('/clientes', clientesRoutes);
-app.use('/veiculos', veiculosRoutes);
-app.use('/vendas', vendasRoutes);
+app.use("/usuarios", usuariosRoutes);
+app.use("/clientes", clientesRoutes);
+app.use("/veiculos", veiculosRoutes);
+app.use("/vendas", vendasRoutes);
 
-// Inicialização do servidor
+
+sequelize.sync({ alter: true }) 
+  .then(() => {
+    console.log("📦 Modelos sincronizados com o banco de dados!");
+  })
+  .catch((err) => {
+    console.error("Erro ao sincronizar modelos:", err);
+  });
+
+const router = AdminExpress.buildRouter(admin);
+app.use(admin.options.rootPath, router);
+
 app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+  console.log(`🚀 Servidor rodando na porta ${port}`);
 });

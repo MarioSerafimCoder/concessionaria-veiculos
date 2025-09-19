@@ -1,49 +1,58 @@
-const db = require('../db');
+const Cliente = require("../models/clientesModel");
 
-exports.getAllClientes = (req, res) => {
-  db.query('SELECT * FROM registros_clientes', (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results);
-  });
+// Buscar todos os clientes
+exports.getAllClientes = async (req, res) => {
+  try {
+    const clientes = await Cliente.findAll();
+    res.json(clientes);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar clientes", details: error.message });
+  }
 };
 
-exports.getClienteById = (req, res) => {
-  const { id } = req.params;
-  db.query('SELECT * FROM registros_clientes WHERE id = ?', [id], (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results[0]);
-  });
+// Buscar cliente por ID
+exports.getClienteById = async (req, res) => {
+  try {
+    const cliente = await Cliente.findByPk(req.params.id);
+    if (!cliente) return res.status(404).json({ error: "Cliente não encontrado" });
+    res.json(cliente);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar cliente", details: error.message });
+  }
 };
 
-exports.createCliente = (req, res) => {
-  const { nome, CPF, email, telefone, endereco, id_funcionario } = req.body;
-  db.query(
-    'INSERT INTO registros_clientes (nome, CPF, email, telefone, endereco, id_funcionario) VALUES (?, ?, ?, ?, ?, ?)',
-    [nome, CPF, email, telefone, endereco, id_funcionario],
-    (err, results) => {
-      if (err) return res.status(500).json(err);
-      res.json({ id: results.insertId, nome, CPF });
-    }
-  );
+// Criar cliente
+exports.createCliente = async (req, res) => {
+  try {
+    const cliente = await Cliente.create(req.body);
+    res.status(201).json(cliente);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao criar cliente", details: error.message });
+  }
 };
 
-exports.updateCliente = (req, res) => {
-  const { id } = req.params;
-  const { nome, CPF, email, telefone, endereco, id_funcionario } = req.body;
-  db.query(
-    'UPDATE registros_clientes SET nome=?, CPF=?, email=?, telefone=?, endereco=?, id_funcionario=? WHERE id=?',
-    [nome, CPF, email, telefone, endereco, id_funcionario, id],
-    (err) => {
-      if (err) return res.status(500).json(err);
-      res.json({ message: 'Cliente atualizado' });
-    }
-  );
+// Atualizar cliente
+exports.updateCliente = async (req, res) => {
+  try {
+    const cliente = await Cliente.findByPk(req.params.id);
+    if (!cliente) return res.status(404).json({ error: "Cliente não encontrado" });
+
+    await cliente.update(req.body);
+    res.json({ message: "Cliente atualizado", cliente });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao atualizar cliente", details: error.message });
+  }
 };
 
-exports.deleteCliente = (req, res) => {
-  const { id } = req.params;
-  db.query('DELETE FROM registros_clientes WHERE id=?', [id], (err) => {
-    if (err) return res.status(500).json(err);
-    res.json({ message: 'Cliente deletado' });
-  });
+// Deletar cliente
+exports.deleteCliente = async (req, res) => {
+  try {
+    const cliente = await Cliente.findByPk(req.params.id);
+    if (!cliente) return res.status(404).json({ error: "Cliente não encontrado" });
+
+    await cliente.destroy();
+    res.json({ message: "Cliente deletado" });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao deletar cliente", details: error.message });
+  }
 };

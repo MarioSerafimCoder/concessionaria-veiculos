@@ -1,51 +1,58 @@
-const db = require('../db');
+const Usuario = require("../models/usuariosModel");
 
-exports.getAllUsuarios = (req, res) => {
-  db.query('SELECT * FROM usuarios_funcionarios', (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results);
-  });
+// Buscar todos os usuários
+exports.getAllUsuarios = async (req, res) => {
+  try {
+    const usuarios = await Usuario.findAll();
+    res.json(usuarios);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar usuários", details: error.message });
+  }
 };
 
-exports.getUsuarioById = (req, res) => {
-  const { id } = req.params;
-  db.query('SELECT * FROM usuarios_funcionarios WHERE id = ?', [id], (err, results) => {
-    if (err) return res.status(500).json(err);
-    res.json(results[0]);
-  });
+// Buscar usuário por ID
+exports.getUsuarioById = async (req, res) => {
+  try {
+    const usuario = await Usuario.findByPk(req.params.id);
+    if (!usuario) return res.status(404).json({ error: "Usuário não encontrado" });
+    res.json(usuario);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar usuário", details: error.message });
+  }
 };
 
-exports.createUsuario = (req, res) => {
-  const { nome, email, senha, tipo } = req.body;
-  db.query(
-    'INSERT INTO usuarios_funcionarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)',
-    [nome, email, senha, tipo],
-    (err, results) => {
-      if (err) return res.status(500).json(err);
-      res.json({ id: results.insertId, nome, email, tipo });
-    }
-  );
+// Criar usuário
+exports.createUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.create(req.body);
+    res.status(201).json(usuario);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao criar usuário", details: error.message });
+  }
 };
 
-exports.updateUsuario = (req, res) => {
-  const { id } = req.params;
-  const { nome, email, senha, tipo } = req.body;
-  db.query(
-    'UPDATE usuarios_funcionarios SET nome=?, email=?, senha=?, tipo=? WHERE id=?',
-    [nome, email, senha, tipo, id],
-    (err, results) => {
-      if (err) return res.status(500).json(err);
-      res.json({ message: 'Usuário atualizado' });
-    }
-  );
+// Atualizar usuário
+exports.updateUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findByPk(req.params.id);
+    if (!usuario) return res.status(404).json({ error: "Usuário não encontrado" });
+
+    await usuario.update(req.body);
+    res.json({ message: "Usuário atualizado", usuario });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao atualizar usuário", details: error.message });
+  }
 };
 
+// Deletar usuário
+exports.deleteUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findByPk(req.params.id);
+    if (!usuario) return res.status(404).json({ error: "Usuário não encontrado" });
 
-exports.deleteUsuario = (req, res) => {
-  const { id } = req.params;
-  db.query('DELETE FROM usuarios_funcionarios WHERE id=?', [id], (err) => {
-    if (err) return res.status(500).json(err);
-    res.json({ message: 'Usuário deletado' });
-  });
+    await usuario.destroy();
+    res.json({ message: "Usuário deletado" });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao deletar usuário", details: error.message });
+  }
 };
-
