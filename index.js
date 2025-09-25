@@ -21,10 +21,10 @@ app.get('/', (req, res) => {
 });
 
 // Rotas
-const usuariosRoutes = require('./routes/usuarios');
-const clientesRoutes = require('./routes/clientes');
-const veiculosRoutes = require('./routes/veiculos');
-const vendasRoutes = require('./routes/vendas');
+const usuariosRoutes = require('./routes/usuariosRoute');
+const clientesRoutes = require('./routes/clientesRoute');
+const veiculosRoutes = require('./routes/veiculosRoute');
+const vendasRoutes = require('./routes/vendasRoute');
 
 app.use('/usuarios', usuariosRoutes);
 app.use('/clientes', clientesRoutes);
