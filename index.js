@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+const AdminJS = require('adminjs');
+const AdminJSExpress = require('@adminjs/express');
+const AdminJSSequelize = require('@adminjs/sequelize'); // Adapter Sequelize
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -31,14 +35,29 @@ app.use('/clientes', clientesRoutes);
 app.use('/veiculos', veiculosRoutes);
 app.use('/vendas', vendasRoutes);
 
-// Sincronização do banco de dados e inicialização do servidor
-sequelize.sync({ force: true }) // Use { force: true } se precisar recriar as tabelas
+// ✅ Registro do adapter Sequelize (novo formato)
+AdminJS.registerAdapter(AdminJSSequelize);
+
+// ✅ Configuração do AdminJS
+const admin = new AdminJS({
+  rootPath: '/admin',
+  resources: [Cliente, Usuario, Veiculo, Venda],
+});
+
+// ✅ Criação do router do AdminJS
+const adminRouter = AdminJSExpress.buildRouter(admin);
+app.use(admin.options.rootPath, adminRouter);
+
+// ✅ Sincronização do banco e inicialização do servidor
+sequelize
+  .sync({ force: false }) // altere para true se quiser recriar as tabelas
   .then(() => {
-    console.log('Banco de dados sincronizado!');
+    console.log('✅ Banco de dados sincronizado!');
     app.listen(port, () => {
-      console.log(`Servidor rodando na porta ${port}`);
+      console.log(`🚀 Servidor rodando em http://localhost:${port}`);
+      console.log(`🧭 Painel AdminJS: http://localhost:${port}${admin.options.rootPath}`);
     });
   })
-  .catch(err => {
-    console.error('Erro ao sincronizar o banco de dados:', err);
+  .catch((err) => {
+    console.error('❌ Erro ao sincronizar o banco de dados:', err);
   });
